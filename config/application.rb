@@ -25,3 +25,5 @@ end
 
 ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
                                         :database => DB_PATH
+
+require_relative '../app/controllers/ar_todo_controller'                                        
