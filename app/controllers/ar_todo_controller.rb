@@ -18,7 +18,8 @@ class ArTodoController
   end
 
   def self.delete(task_id)
-    # Task.delete()
+    task_to_delete = Task.find(task_id)
+    task_to_delete.delete
   end
 
   def self.interface(command, parameter)
