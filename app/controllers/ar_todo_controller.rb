@@ -8,8 +8,7 @@ class ArTodoController
     end
 
     tasks.each do |t|
-      status = t.completed ? '- Completed' : ''
-      puts "#{t.id} - #{t.name} #{status}"
+      print_task(t)
     end
   end
 
@@ -22,9 +21,31 @@ class ArTodoController
     task_to_delete.delete
   end
 
+  def self.complete(task_id)
+    task_to_complete = Task.find(task_id)
+    task_to_complete.completed = true
+    task_to_complete.save
+    print_task(task_to_complete)
+  end
+
+  def self.incomplete(task_id)
+    task_to_incomplete = Task.find(task_id)
+    task_to_incomplete.completed = false
+    task_to_incomplete.save
+    print_task(task_to_incomplete)
+  end
+   
   def self.interface(command, parameter)
     self.send(command.to_sym, parameter)
   end
+
+  private
+
+  def self.print_task(task)
+    status = task.completed ? '- Completed' : ''
+    puts "#{task.id} - #{task.name} #{status}"
+  end
+
 end
 
 
