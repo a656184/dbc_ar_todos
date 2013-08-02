@@ -13,10 +13,12 @@ class ArTodoController
     end
   end
 
-  def self.add
+  def self.add(new_task)
+    Task.create({:name => new_task, :completed => false})
   end
 
-  def self.delete
+  def self.delete(task_id)
+    # Task.delete()
   end
 
   def self.interface(command, parameter)
